@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GB Job Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">GB</div>
+        <div>
+          <p class="brand-name">GB Job Portal</p>
+          <span class="brand-tag">Career opportunities worldwide</span>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#">Home</a>
+        <a href="#">Find Jobs</a>
+        <a href="#">Companies</a>
+        <a href="#">Career Advice</a>
+      </nav>
+
+      <button id="postJobBtn" class="primary-btn">Post a Job</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Open roles for ambitious talent</p>
+          <h1>Find your next opportunity with confidence.</h1>
+          <p class="hero-text">
+            Explore role-ready jobs, connect with great companies, and take the next step in your career.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <p>Marketplace stats</p>
+          <div class="stats-grid">
+            <div>
+              <strong>12K+</strong>
+              <span>Jobs</span>
+            </div>
+            <div>
+              <strong>3.4K</strong>
+              <span>Companies</span>
+            </div>
+            <div>
+              <strong>92%</strong>
+              <span>Hired via portal</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="filters-panel">
+        <div class="search-field">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="text" placeholder="Search title, company, skills..." />
+        </div>
+
+        <div class="select-field">
+          <label for="locationFilter">Location</label>
+          <select id="locationFilter">
+            <option value="all">All locations</option>
+          </select>
+        </div>
+
+        <div class="select-field">
+          <label for="typeFilter">Type</label>
+          <select id="typeFilter">
+            <option value="all">All types</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Remote">Remote</option>
+            <option value="Contract">Contract</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+
+        <div class="select-field">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+
+        <div class="select-field">
+          <label for="experienceFilter">Experience</label>
+          <select id="experienceFilter">
+            <option value="all">Any experience</option>
+            <option value="1+ years">1+ years</option>
+            <option value="2+ years">2+ years</option>
+            <option value="3+ years">3+ years</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="content-wrapper">
+        <div class="jobs-column">
+          <div class="section-heading">
+            <h2>Featured jobs</h2>
+            <span id="resultsCount">0 roles</span>
+          </div>
+          <div id="jobsGrid" class="jobs-grid"></div>
+        </div>
+
+        <aside id="jobDetail" class="job-detail"></aside>
+      </section>
+    </main>
+
+    <div id="applicationModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Apply for this role</h3>
+          <button type="button" class="close-btn" data-close="applicationModal">×</button>
+        </div>
+
+        <form id="applicationForm">
+          <input type="hidden" id="jobId" />
+
+          <div class="field-grid">
+            <label>
+              Full name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Phone number
+              <input type="tel" name="phone" />
+            </label>
+            <label>
+              Portfolio / LinkedIn
+              <input type="url" name="portfolio" placeholder="https://..." />
+            </label>
+          </div>
+
+          <label>
+            Cover letter
+            <textarea name="coverLetter" rows="5" required placeholder="Tell us why you are a strong fit..."></textarea>
+          </label>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" data-close="applicationModal">Cancel</button>
+            <button type="submit" class="primary-btn">Submit application</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="jobModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Post a new job</h3>
+          <button type="button" class="close-btn" data-close="jobModal">×</button>
+        </div>
+
+        <form id="jobForm">
+          <div class="field-grid">
+            <label>
+              Job title
+              <input type="text" name="title" required />
+            </label>
+            <label>
+              Company
+              <input type="text" name="company" required />
+            </label>
+            <label>
+              Location
+              <input type="text" name="location" required />
+            </label>
+            <label>
+              Job type
+              <select name="type" required>
+                <option value="Full-time">Full-time</option>
+                <option value="Remote">Remote</option>
+                <option value="Contract">Contract</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </label>
+            <label>
+              Category
+              <input type="text" name="category" required />
+            </label>
+            <label>
+              Salary
+              <input type="text" name="salary" placeholder="$1,500 - $2,000" />
+            </label>
+            <label>
+              Experience
+              <input type="text" name="experience" value="1+ years" />
+            </label>
+          </div>
+
+          <label>
+            Description
+            <textarea name="description" rows="4" required></textarea>
+          </label>
+
+          <label>
+            Requirements (comma separated)
+            <textarea name="requirements" rows="3" placeholder="Strong portfolio, React experience, communication skills"></textarea>
+          </label>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" data-close="jobModal">Cancel</button>
+            <button type="submit" class="primary-btn">Publish job</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
